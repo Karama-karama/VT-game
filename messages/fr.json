@@ -1,0 +1,91 @@
+{
+  "HomePage": {
+    "title": "Vache Taureau",
+    "subtitle": "Démarrer le jeu"
+  },
+  "header": {
+  "name": "Vache Taureau",
+  "tagline": "Jeu de déduction",
+  "rules": "Régles",
+  "close": "Fermer"
+},
+  "IntroCard": {
+      "tag": "Le classique à quatre chiffres",
+      "title": "Devinez le code. <accent>Faites parler</accent> les indices.",
+      "description": "Un code secret, quatre chiffres sans doublon et dix essais. Chaque proposition vous rapproche du bon pâturage.",
+      "play": "Jouer",
+      "duration": "Une partie dure environ 3 minutes.",
+      "code": "Code secret",
+      "challenge": "Prêt à mener l'enquête ?"
+  },
+    "Game": {
+      "play": "Jouer",
+      "abandon": "Abandonner",
+      "guessInput": "Valider l'essai",
+      "timerOn": "Avec chrono",
+      "timerOff": "Sans chrono",
+      "taureau": "taureau",
+      "vache": "vache",
+      "introTag": "Le classique à quatre chiffres",
+      "tries": "Essai {current} sur {total}",
+      "remaining": "{count} essais restants",
+      "message": "Saisissez votre proposition",
+      "reminder": "Un chiffre par case · aucun doublon",
+      "validate": "Vlaider l'Essaie",
+      "adviceTitle": "Petit conseil",
+      "advice": "Gardez les Taureaux en place et déplacez seulement les Vaches au prochain essai.",
+      "restart": "Recommencer",
+      "attemptsTitle": "Vos essais",
+      "attemptsHint": "Les {total} lignes restent visibles jusqu'à la fin.",
+       "status": "Partie en cours",
+        "title": "À vous de jouer.",
+      "party": "Partie #{id}",
+      "progress": "Essai {current} sur {total}"
+  },
+  "Rules": {
+    "title": "4 Chiffres",
+    "subtitle": "Le code des pâturages",
+    "description": "Retrouvez le code secret en proposant des combinaisons de chiffres. Analysez les indices après chaque essai :",
+    "digitsCount": "{{count}} CHIFFRES",
+    "clues": {
+      "bull": {
+        "badge": "T",
+        "label": "Taureau",
+        "description": "Bon chiffre, exactement à la bonne place."
+      },
+      "cow": {
+        "badge": "V",
+        "label": "Vache",
+        "description": "Bon chiffre, mais placé ailleurs dans le code."
+      }
+    },
+    "instructions": [
+      "Un chiffre par case.",
+      "Aucun doublon autorisé dans la proposition.",
+      "Vous disposez d'un nombre d'essais limité pour trouver le code."
+    ]
+  },
+  "PostGame": {
+      "retry": "Try Again",
+    "success": {
+      "label": "Code Cracked",
+      "title": "Sharpshooter!",
+      "subtitle": "Four Bulls in just {count} attempts. You read those clues like a master."
+    },
+    "fail": {
+      "label": "Out of Attempts",
+      "title": "The Code Slipped Away",
+      "subtitle": "So close! Review your last few moves and jump back in for another round."
+    },
+    "preview": "The code was",
+    "tries": "Attempts",
+    "time": "Time"
+  },
+  "Table": {
+    "caption": "Historique de vos essais",
+    "trial": "Essai",
+    "input": "Proposition",
+    "result": "Résultat",
+    "empty": "Aucun essai pour l'instant"
+  }
+}

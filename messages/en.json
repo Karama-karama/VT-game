@@ -1,0 +1,93 @@
+{
+    "HomePage": {
+    "title": "Bulls and Cows",
+    "subtitle": "Guess the 4-digit code"
+  },
+  "header": {
+  "name": "Vache Taureau",
+  "tagline": "Deduction Game",
+    "rules": "Rules",
+    "close": "Close"
+},
+  "IntroCard": {
+    "tag": "The 4-digit classic",
+    "title": "Crack the code. <accent>Master</accent> the clues.",
+    "description": "One secret code, four unique digits, and ten attempts. Every guess brings you closer to victory.",
+    "play": "Play",
+    "duration": "A game lasts about 3 minutes.",
+    "code": "Secret Code",
+    "challenge": "Ready to investigate?"
+  },
+  "Game": {
+    "play": "Play",
+    "abandon": "Abandon",
+    "guessInput": "Enter your guess",
+    "timerOn": "Use timer",
+    "timerOff": "Don't use timer",
+    "taureau": "taureau",
+    "vache": "vache",
+    "introTag": "Four digit game code",
+    "tries": "Attempt {current} of {total}",
+    "remaining": "{count} remaining attempts",
+    "message": "Type your attempt",
+    "reminder": "One digit per case · no repetition",
+    "validate": "Validate Attempt",
+      "adviceTitle": "A little tip",
+      "advice": "Keep the Ts in place and move the Vs around on your next attempt",
+      "restart": "Try again",
+      "attemptsTitle": "Your attempts",
+      "attemptsHint": "The {total} lines are visible until the end of the game.",
+       "status": "On going game",
+        "title": "Your move",
+      "party": "Game #{id}",
+      "progress": "Attempt {current} of {total}"
+
+  },
+  
+  "Rules": {
+    "title": "4 Digits",
+    "subtitle": "The Pasture Code",
+    "description": "Crack the secret code by submitting digit combinations. Pay attention to the clues given after each guess:",
+    "digitsCount": "{{count}} DIGITS",
+    "clues": {
+      "bull": {
+        "badge": "T",
+        "label": "Bull",
+        "description": "Correct digit, exactly in the right spot."
+      },
+      "cow": {
+        "badge": "V",
+        "label": "Cow",
+        "description": "Correct digit, but placed elsewhere in the code."
+      }
+    },
+    "instructions": [
+      "One digit per box.",
+      "No duplicate digits allowed in the guess.",
+      "You have a limited number of attempts to find the code."
+    ]
+  },
+"PostGame": {
+    "retry": "Réssayer",
+  "success": {
+    "label": "Code déchiffré",
+    "title": "Quel flair !",
+    "subtitle": "Quatre Taureaux en seulement {count} essais. Le pâturage n'avait aucun secret pour vous."
+  },
+    "fail": {
+      "label": "Dix essais écoulés",
+      "title": "Le code s'est échappé.",
+      "subtitle": "Vous étiez tout près. Analysez les derniers indices et repartez pour une nouvelle enquête."
+    },
+    "preview": "Le code était",
+    "tries": "Essais",
+    "time": "Temps"
+  },
+    "Table": {
+      "caption": "Guess History",
+      "trial": "Attempt",
+      "input": "Guess",
+      "result": "Result",
+      "empty": "No attempts yet"
+  }
+}

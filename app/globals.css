@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
+/* Dark variant driven by data-theme (works with next-themes or a manual toggle) */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------- Light (default) ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f0e0;      /* page cream */
+  --foreground: #3b2a1a;      /* dark brown text */
+  --muted: #7a6a58;           /* secondary text */
+
+  --surface: #f1e4cb;         /* cards / game panel */
+  --surface-2: #fbf6ea;       /* inner panels, inputs */
+  --border: #e2d2b3;
+
+  --primary: #dc4a30;         /* coral CTA (JOUER) */
+  --primary-foreground: #ffffff;
+  --accent: #fbeab8;          /* yellow hint box / pill */
+  --accent-foreground: #6b4f12;
+
+  --success: #2f7d57;         /* "Taureau" badge */
+  --success-soft: #dcefe3;
+  --danger: #c9402b;          /* "Vache" badge */
+  --danger-soft: #f7dcd5;
+
+  --ink: #2b1d11;             /* dark header bar / logo tile */
+  --ink-foreground: #f8f0e0;
 }
 
+/* ---------- Dark (explicit toggle) ---------- */
+[data-theme="dark"] {
+  --background: #1a1410;
+  --foreground: #f3e9d6;
+  --muted: #a8977f;
+
+  --surface: #251d16;
+  --surface-2: #2e251c;
+  --border: #3d3226;
+
+  --primary: #ec6247;
+  --primary-foreground: #1a1410;
+  --accent: #3d3217;
+  --accent-foreground: #f3dc9a;
+
+  --success: #5cc08b;
+  --success-soft: #1e3a2c;
+  --danger: #f08a77;
+  --danger-soft: #402019;
+
+  --ink: #f3e9d6;
+  --ink-foreground: #1a1410;
+}
+
+/* ---------- Dark fallback (system preference, only if no explicit theme) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --background: #1a1410;
+    --foreground: #f3e9d6;
+    --muted: #a8977f;
+    --surface: #251d16;
+    --surface-2: #2e251c;
+    --border: #3d3226;
+    --primary: #ec6247;
+    --primary-foreground: #1a1410;
+    --accent: #3d3217;
+    --accent-foreground: #f3dc9a;
+    --success: #5cc08b;
+    --success-soft: #1e3a2c;
+    --danger: #f08a77;
+    --danger-soft: #402019;
+    --ink: #f3e9d6;
+    --ink-foreground: #1a1410;
+  }
+}
+
+/* ---------- Tailwind tokens → utilities (bg-surface, text-muted, ...) ---------- */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 10px 30px -12px rgb(59 42 26 / 0.25);
+}
+@theme {
+  --animate-twinkle: twinkle 2s ease-in-out infinite;
+  --animate-row-in: row-in 0.35s ease-out;  
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+    50%      { opacity: 1; transform: scale(1) rotate(25deg); }
+  }
+    @keyframes row-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
