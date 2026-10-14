@@ -40,7 +40,17 @@
        "status": "On going game",
         "title": "Your move",
       "party": "Game #{id}",
-      "progress": "Attempt {current} of {total}"
+      "progress": "Attempt {current} of {total}",
+       "errors": {
+    "length": "Entrez quatre chiffres.",
+    "digits": "Chiffres uniquement.",
+    "duplicate": "Aucun chiffre en double."
+  },
+  "abandonTitle": "Abandonner la partie ?",
+  "abandonText": "Le code vous sera révélé et la partie comptera comme abandonnée.",
+  "cancel": "Continuer à jouer",
+  "abandonConfirm": "Abandonner",
+  "close": "Fermer"
 
   },
   
