@@ -9,7 +9,9 @@ import { Button } from "./reusables/Button";
 
 interface PlayingViewProps {
   attempts: Guess[];
-  digits: string[];
+  value: string;
+  onValueChange: (value: string) => void;
+  error?: string | null;
   partyId: string;
   total?: number; // MAX_TRIES once the logic is wired
   onSubmit: () => void;
@@ -19,7 +21,9 @@ interface PlayingViewProps {
 
 export function PlayingView({
   attempts,
-  digits,
+  value,
+  onValueChange,
+  error = null,
   partyId,
   total = 10,
   onSubmit,
@@ -48,8 +52,10 @@ export function PlayingView({
       <div className="grid gap-5 lg:grid-cols-[1.7fr_1fr] lg:items-start">
         {/* 1 · guess card */}
         <GuessPanel
-          digits={digits}
+          value={value}
           used={attempts.length}
+          onValueChange={onValueChange}
+          error={error}
           total={total}
           onSubmit={onSubmit}
           className="lg:col-start-1 lg:row-start-1"
@@ -76,22 +82,23 @@ export function PlayingView({
             <RulesBox />
 
           <AdviceCard title={g("adviceTitle")}>{g("advice")}</AdviceCard>
-
+{/* 
           <Button
             label={g("restart")}
             icon={<RotateCcw />}
             color="outline"
             onClick={onRestart}
             fullWidth
-          />
+          /> */}
 
-          <button
+          <Button
+          label={g("abandon")}
             type="button"
             onClick={onAbandon}
+            icon={<RotateCcw />}
+            color="outline"
             className="text-center text-[11px] font-bold uppercase tracking-widest text-muted transition hover:text-danger"
-          >
-            {g("abandon")}
-          </button>
+          />
         </aside>
       </div>
     </div>

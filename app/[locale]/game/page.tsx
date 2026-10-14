@@ -9,32 +9,116 @@ import { Guess, TrialTable } from "@/app/components/reusables/TrialTable";
 import { CardBoardWrapper } from "@/app/components/reusables/CardBoardWrapper";
 import { ProgressBar } from "@/app/components/ProgressBar";
 import { PlayingView } from "@/app/components/PlayingView";
+
+import {MAX_TRIES, validateGuess } from "@/app/lib/game/logic";
+import { useGame } from "@/app/lib/game/use-game"
+import { Modal } from "@/app/components/reusables/Modal";
+
 const secret = "1234"
 const restart =() => console.log('restart game')
 export default function GamePage(){
  const t = useTranslations("PostGame");
  const g = useTranslations("Game");
 const [guesses, setGuesses] = useState<Guess[]>([]);
-  const router = useRouter();
+const router = useRouter();
 
+const { game, submitGuess, abandon, restart } = useGame();
+
+  const [value, setValue] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
+  if (!game) return null; // still loading from localStorage (skeleton later)
+
+  function handleChange(next: string) {
+    setValue(next);
+    setError(null);
+  }
+
+  function handleSubmit() {
+    const problem = validateGuess(value);
+    if (problem) {
+      setError(g(`errors.${problem}`));
+      return;
+    }
+    submitGuess(value);
+    setValue("");
+  }
+
+  function handleRestart() {
+    restart();
+    setValue("");
+    setError(null);
+  }
+
+  // Finished game → result screen (also what you see after a refresh)
+  if (game.status !== "playing") {
+    const seconds = Math.round(((game.finishedAt ?? game.startedAt) - game.startedAt) / 1000);
     return (
-        <div>
-            <PlayingView
-                partyId="07-8637"
-                digits={["5", "8", "", ""]}
-                attempts={[
-                    { input: "1749", taureau: 0, vache: 2 },
-                    { input: "5092", taureau: 1, vache: 1 },
-                    { input: "5872", taureau: 2, vache: 1 },
-                    { input: "5826", taureau: 3, vache: 0 },
-                ]}
-                onSubmit={() => {}}
-                onRestart={() => {}}
-                onAbandon={() => {}}
-                />
-        {/* <GameView status="fail" code={secret.split("")} count={5} seconds={161}>
-        <Button label={t("retry")} icon={<RotateCcw />} onClick={() => router.push("/")} />
-        </GameView> */}
+      <GameView
+        status={game.status === "won" ? "success" : "fail"}
+        code={game.secret.split("")}
+        count={game.attempts.length}
+        seconds={seconds}
+      >
+        <Button label={t("retry")} icon={<RotateCcw />} onClick={handleRestart} />
+      </GameView>
+    );
+  }
+
+  return (
+    <>
+      <PlayingView
+        partyId={game.id.slice(0, 6).toUpperCase()}
+        total={MAX_TRIES}
+        attempts={game.attempts.map((a) => ({ input: a.guess, taureau: a.bulls, vache: a.cows }))}
+        value={value}
+        onValueChange={handleChange}
+        error={error}
+        onSubmit={handleSubmit}
+        onRestart={handleRestart}
+        onAbandon={() => setConfirmOpen(true)}
+      />
+
+      <Modal
+        open={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        title={g("abandonTitle")}
+        closeLabel={g("close")}
+      >
+        <p className="text-sm text-muted">{g("abandonText")}</p>
+        <div className="flex justify-end gap-3">
+          <Button label={g("cancel")} color="outline" onClick={() => setConfirmOpen(false)} />
+          <Button
+            label={g("abandonConfirm")}
+            color="danger"
+            onClick={() => { abandon(); setConfirmOpen(false); }}
+          />
         </div>
-    )
+      </Modal>
+    </>
+  );
 }
+
+
+//     return (
+//         <div>
+//             <PlayingView
+//                 partyId="07-8637"
+//                 digits={["5", "8", "", ""]}
+//                 attempts={[
+//                     { input: "1749", taureau: 0, vache: 2 },
+//                     { input: "5092", taureau: 1, vache: 1 },
+//                     { input: "5872", taureau: 2, vache: 1 },
+//                     { input: "5826", taureau: 3, vache: 0 },
+//                 ]}
+//                 onSubmit={() => {}}
+//                 onRestart={() => {}}
+//                 onAbandon={() => {}}
+//                 />
+//         {/* <GameView status="fail" code={secret.split("")} count={5} seconds={161}>
+//         <Button label={t("retry")} icon={<RotateCcw />} onClick={() => router.push("/")} />
+//         </GameView> */}
+//         </div>
+//     )
+// }
