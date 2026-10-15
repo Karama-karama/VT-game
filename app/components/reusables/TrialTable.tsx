@@ -20,11 +20,11 @@ export function TrialTable(
       <table className="w-full border-collapse text-left text-sm">
         <caption className="sr-only">{t("caption")}</caption>
         {/* Strictly control space allocation */}
-    <colgroup>
-      <col className="w-12 sm:w-16" /> {/* Column 1: Just enough for #01 */}
-      <col className="w-auto" />       {/* Column 2: Takes remaining flexible space */}
-      <col className="w-28 sm:w-36" /> {/* Column 3: Fixed fit for the tags */}
-    </colgroup>
+        <colgroup>
+          <col className="w-12 sm:w-16"/> 
+          <col className="w-auto"/>       
+          <col className="w-28 sm:w-36"/> 
+        </colgroup>
         <thead className="bg-ink text-ink-foreground">
           <tr className="text-[10px] uppercase tracking-widest">
             <th scope="col" className="pl-3 pr-1 py-3 font-bold">{t("trial")}</th>

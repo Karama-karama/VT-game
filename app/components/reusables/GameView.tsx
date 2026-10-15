@@ -60,7 +60,7 @@ export function GameView({
     <section
       className={`relative mx-auto w-full max-w-xl overflow-hidden rounded-[28px] border bg-surface-2 p-6 sm:p-8 ${card} ${className}`}
     >
-      {status === "success" && <Sparkles />}
+      {status === "success" && <Sparkles/>}
 
       <div className="relative flex flex-col items-center text-center">
         <div className={`mb-5 grid size-20 place-items-center rounded-full border ${icon}`}>
