@@ -76,7 +76,7 @@
     ]
   },
   "PostGame": {
-      "retry": "Try Again",
+      "retry": "New Game",
     "success": {
       "label": "Code Cracked",
       "title": "Sharpshooter!",

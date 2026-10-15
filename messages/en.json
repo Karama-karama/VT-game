@@ -78,7 +78,7 @@
     ]
   },
 "PostGame": {
-    "retry": "Réssayer",
+    "retry": "Nouvelle partie",
   "success": {
     "label": "Code déchiffré",
     "title": "Quel flair !",
