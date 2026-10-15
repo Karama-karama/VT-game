@@ -13,6 +13,7 @@ export function generateSecret(length = CODE_LENGTH): string {
     const swapIndex = Math.floor(Math.random() * (length - 1)) + 1;
     [digits[0], digits[swapIndex]] = [digits[swapIndex], digits[0]];
   }
+  console.log(digits.slice(0, length).join(""))
     return digits.slice(0, length).join("");
 }
 

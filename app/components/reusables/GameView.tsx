@@ -5,6 +5,7 @@ import { Trophy, Flag } from "lucide-react";
 import { DigitInput } from "./DigitInput";
 import { Sparkles } from "../reusables/Sparkels"
 import { Guess, TrialTable } from "./TrialTable";
+import {GloomRain} from "./GloomRain"
 
 type Status = "success" | "fail";
 
@@ -61,6 +62,7 @@ export function GameView({
       className={`relative mx-auto w-full max-w-xl overflow-hidden rounded-[28px] border bg-surface-2 p-6 sm:p-8 ${card} ${className}`}
     >
       {status === "success" && <Sparkles/>}
+      {status === "fail" && <GloomRain />}
 
       <div className="relative flex flex-col items-center text-center">
         <div className={`mb-5 grid size-20 place-items-center rounded-full border ${icon}`}>
