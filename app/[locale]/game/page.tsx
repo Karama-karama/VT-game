@@ -55,14 +55,18 @@ const { game, submitGuess, abandon, restart } = useGame();
   if (game.status !== "playing") {
     const seconds = Math.round(((game.finishedAt ?? game.startedAt) - game.startedAt) / 1000);
     return (
+      <>
       <GameView
         status={game.status === "won" ? "success" : "fail"}
         code={game.secret.split("")}
         count={game.attempts.length}
         seconds={seconds}
+        attempts={game.attempts.map((a) => ({ input: a.guess, taureau: a.bulls, vache: a.cows }))}
+
       >
         <Button label={t("retry")} icon={<RotateCcw />} onClick={handleRestart} />
       </GameView>
+      </>
     );
   }
 

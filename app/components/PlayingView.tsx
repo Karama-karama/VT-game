@@ -82,14 +82,6 @@ export function PlayingView({
             <RulesBox />
 
           <AdviceCard title={g("adviceTitle")}>{g("advice")}</AdviceCard>
-{/* 
-          <Button
-            label={g("restart")}
-            icon={<RotateCcw />}
-            color="outline"
-            onClick={onRestart}
-            fullWidth
-          /> */}
 
           <Button
           label={g("abandon")}

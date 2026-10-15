@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Trophy, Flag } from "lucide-react";
 import { DigitInput } from "./DigitInput";
 import { Sparkles } from "../reusables/Sparkels"
+import { Guess, TrialTable } from "./TrialTable";
 
 type Status = "success" | "fail";
 
@@ -14,6 +15,8 @@ interface GameViewProps {
   seconds: number;   // elapsed time
   className?: string;
   children?: ReactNode; // action buttons
+  attempts: Guess[];
+
 }
 
 const styles: Record<Status, { card: string; icon: string; Icon: typeof Trophy }> = {
@@ -48,6 +51,7 @@ export function GameView({
   seconds,
   className = "",
   children,
+  attempts
 }: GameViewProps) {
   const p = useTranslations("PostGame");
   const { card, icon, Icon } = styles[status];
@@ -98,6 +102,8 @@ export function GameView({
 
         {children && <div className="mt-6 flex w-full justify-center">{children}</div>}
       </div>
+      <TrialTable guesses={attempts} className="mt-4"/>
+      
     </section>
   );
 }
