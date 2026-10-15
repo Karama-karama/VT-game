@@ -55,14 +55,18 @@ const { game, submitGuess, abandon, restart } = useGame();
   if (game.status !== "playing") {
     const seconds = Math.round(((game.finishedAt ?? game.startedAt) - game.startedAt) / 1000);
     return (
+      <>
       <GameView
         status={game.status === "won" ? "success" : "fail"}
         code={game.secret.split("")}
         count={game.attempts.length}
         seconds={seconds}
+        attempts={game.attempts.map((a) => ({ input: a.guess, taureau: a.bulls, vache: a.cows }))}
+
       >
         <Button label={t("retry")} icon={<RotateCcw />} onClick={handleRestart} />
       </GameView>
+      </>
     );
   }
 
@@ -99,26 +103,3 @@ const { game, submitGuess, abandon, restart } = useGame();
     </>
   );
 }
-
-
-//     return (
-//         <div>
-//             <PlayingView
-//                 partyId="07-8637"
-//                 digits={["5", "8", "", ""]}
-//                 attempts={[
-//                     { input: "1749", taureau: 0, vache: 2 },
-//                     { input: "5092", taureau: 1, vache: 1 },
-//                     { input: "5872", taureau: 2, vache: 1 },
-//                     { input: "5826", taureau: 3, vache: 0 },
-//                 ]}
-//                 onSubmit={() => {}}
-//                 onRestart={() => {}}
-//                 onAbandon={() => {}}
-//                 />
-//         {/* <GameView status="fail" code={secret.split("")} count={5} seconds={161}>
-//         <Button label={t("retry")} icon={<RotateCcw />} onClick={() => router.push("/")} />
-//         </GameView> */}
-//         </div>
-//     )
-// }

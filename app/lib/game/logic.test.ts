@@ -28,6 +28,10 @@ describe("generateSecret", () => {
       expect(new Set(secret).size).toBe(4);
     }
   });
+  it("code doesn't start with a O ", ()=> {
+    const secret = generateSecret();
+    expect(secret[0] !== '0')
+  })
 });
 
 describe("sanitizeGuess", () => {

@@ -7,6 +7,12 @@ export function generateSecret(length = CODE_LENGTH): string {
         const j = Math.floor(Math.random() * (i + 1));
         [digits[i], digits[j]] = [digits[j], digits[i]];
     }
+    // If index 0 gets assigned '0', swap it with a random non-zero digit in the selected slice
+  if (digits[0] === "0") {
+    // Pick a random position between 1 and (length - 1)
+    const swapIndex = Math.floor(Math.random() * (length - 1)) + 1;
+    [digits[0], digits[swapIndex]] = [digits[swapIndex], digits[0]];
+  }
     return digits.slice(0, length).join("");
 }
 

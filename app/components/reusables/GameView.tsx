@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl";
 import { Trophy, Flag } from "lucide-react";
 import { DigitInput } from "./DigitInput";
 import { Sparkles } from "../reusables/Sparkels"
+import { Guess, TrialTable } from "./TrialTable";
+import {GloomRain} from "./GloomRain"
 
 type Status = "success" | "fail";
 
@@ -14,6 +16,8 @@ interface GameViewProps {
   seconds: number;   // elapsed time
   className?: string;
   children?: ReactNode; // action buttons
+  attempts: Guess[];
+
 }
 
 const styles: Record<Status, { card: string; icon: string; Icon: typeof Trophy }> = {
@@ -48,6 +52,7 @@ export function GameView({
   seconds,
   className = "",
   children,
+  attempts
 }: GameViewProps) {
   const p = useTranslations("PostGame");
   const { card, icon, Icon } = styles[status];
@@ -56,7 +61,8 @@ export function GameView({
     <section
       className={`relative mx-auto w-full max-w-xl overflow-hidden rounded-[28px] border bg-surface-2 p-6 sm:p-8 ${card} ${className}`}
     >
-      {status === "success" && <Sparkles />}
+      {status === "success" && <Sparkles/>}
+      {status === "fail" && <GloomRain />}
 
       <div className="relative flex flex-col items-center text-center">
         <div className={`mb-5 grid size-20 place-items-center rounded-full border ${icon}`}>
@@ -98,6 +104,8 @@ export function GameView({
 
         {children && <div className="mt-6 flex w-full justify-center">{children}</div>}
       </div>
+      <TrialTable guesses={attempts} className="mt-4"/>
+      
     </section>
   );
 }
