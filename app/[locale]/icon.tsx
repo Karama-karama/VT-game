@@ -17,15 +17,15 @@ export default function Icon() {
           justifyContent: 'center',
           width: '100%',
           height: '100%',
-          backgroundColor: '#3b2a1a', // Fallback for your dark accent background
-          borderRadius: '6px',        // Matches rounded-md
+          backgroundColor: '#3b2a1a', 
+          borderRadius: '6px',        
         }}
       >
         <span
           style={{
             fontSize: 20,
             fontWeight: 700,
-            color: '#F1BE48',         // Your exact gold text color
+            color: '#F1BE48',    
             display: 'flex',
           }}
         >
