@@ -1,26 +1,18 @@
 'use client';
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/app/components/reusables/Button";
 import { GameView } from "@/app/components/reusables/GameView";
-import { ArrowRight, RotateCcw } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Guess, TrialTable } from "@/app/components/reusables/TrialTable";
-import { CardBoardWrapper } from "@/app/components/reusables/CardBoardWrapper";
-import { ProgressBar } from "@/app/components/ProgressBar";
 import { PlayingView } from "@/app/components/PlayingView";
 
 import {MAX_TRIES, validateGuess } from "@/app/lib/game/logic";
 import { useGame } from "@/app/lib/game/use-game"
 import { Modal } from "@/app/components/reusables/Modal";
 
-const secret = "1234"
-const restart =() => console.log('restart game')
 export default function GamePage(){
  const t = useTranslations("PostGame");
  const g = useTranslations("Game");
-const [guesses, setGuesses] = useState<Guess[]>([]);
-const router = useRouter();
 
 const { game, submitGuess, abandon, restart } = useGame();
 
