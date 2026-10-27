@@ -6,7 +6,7 @@ A code-breaking game: guess the secret number in **10 tries**. After each guess 
 - **Vache (cow):** right digit, wrong position
 
 👉 **Play it here:** [[Demo-Link](https://vt-game-gamma.vercel.app/)]
-
+![Screenshot](./public/VT-Game.png)
 
 ## Features
 
