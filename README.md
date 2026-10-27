@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vache-Taureau 🐂🐄
 
-## Getting Started
+A code-breaking game: guess the secret number in **10 tries**. After each guess you get feedback:
 
-First, run the development server:
+- **Taureau (bull):** right digit, right position
+- **Vache (cow):** right digit, wrong position
+
+👉 **Play it here:** [[Demo-Link](https://vt-game-gamma.vercel.app/)]
+
+
+## Features
+
+- Secret number of 4 digits, 10 attempts per game
+- Win and fail screens with a celebratory animation
+- English / French with a language switcher
+- Light and dark theme (light by default)
+- Game progress survives a page refresh
+- Responsive layout, playable on mobile
+
+## Tech stack
+
+| Area | Tools |
+|---|---|
+| Framework | Next.js (App Router), React, TypeScript |
+| Styling | Tailwind CSS |
+| i18n | next-intl (routes under `app/[locale]`) |
+| Theming | next-themes |
+| Hosting | Vercel (+ Vercel Analytics) |
+
+## Getting started
 
 ```bash
+git clone https://github.com/Karama-karama/VT-game
+cd vache-taureau
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How it works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- The game screen lives on a single `/game` route and renders either the playing, winner or failed view depending on game state.
+- Game state (secret, attempts, status) is persisted in `localStorage`, so a refresh doesn't lose your progress.
+- Translations live in `[messages/ path]`, and adding a language means adding one file there.
 
-## Learn More
+## Known limitations
 
-To learn more about Next.js, take a look at the following resources:
+- The secret is stored client-side in `localStorage`, so it's fine for a casual game but not tamper-proof. Moving game logic to the server is planned.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [ ] Passwordless authentication (email / social) with a guest mode kept
+- [ ] Player profiles (name and avatar)
+- [ ] Multiplayer rooms: shared secret code, first to crack it wins, live progress (x/10) of opponents
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [Karama Aissaoui](https://www.linkedin.com/in/karama-aissaoui-/) · [GitHub](https://github.com/Karama-karama)
